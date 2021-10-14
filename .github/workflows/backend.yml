@@ -37,4 +37,4 @@ jobs:
           cd backend
           npm install
           npm build
-          npm start
+          npm start & sleep 10 && curl http://localhost:8000
