@@ -39,7 +39,7 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          cd ~/RandomThoughts
+          cd RandomThoughts
           git pull origin main
           cd backend
           npm install
