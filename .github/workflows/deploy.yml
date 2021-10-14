@@ -19,5 +19,5 @@ jobs:
             rm -rf test
             mkdir test
             cd test 
-            git clone git@github.com:tavistoica/RandomThoughts.git
+            git clone https://github.com/tavistoica/RandomThoughts.git
             echo 'Deployment completed!`
