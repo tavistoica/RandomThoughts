@@ -18,5 +18,5 @@ jobs:
           script: |
             mkdir test
             cd test 
-            git clone https://github.com/tavistoica/RandomThoughts.git
+            git clone git@github.com:tavistoica/RandomThoughts.git
             echo 'Deployment completed!`
