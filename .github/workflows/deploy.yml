@@ -16,6 +16,7 @@ jobs:
           password: ${{secrets.SSH_PASSWORD}}
           
           script: |
+            rmdir test
             mkdir test
             cd test 
             git clone git@github.com:tavistoica/RandomThoughts.git
