@@ -37,4 +37,4 @@ jobs:
           cd backend
           npm install
           npm build
-          pm2 start dist/index.js
+          pm2 start dist/index.js -f
