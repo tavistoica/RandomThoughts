@@ -1,0 +1,23 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Node.js app
+        uses: appleboy/ssh-action@v0.1.4
+        with: 
+          host: ${{secrets.SSH_HOST}}
+          username: ${{secrets.SSH_USERNAME}}
+          password: ${{secrets.SSH_PASSWORD}}
+          
+          script: |
+            rm -rf test
+            mkdir test
+            cd test 
+            git clone https://github.com/tavistoica/RandomThoughts.git
+            echo 'Deployment completed!`
