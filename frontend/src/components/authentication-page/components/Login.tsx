@@ -6,12 +6,18 @@ import {
   Button,
   FormControl,
   FormErrorMessage,
+  Grid,
+  Center,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useMutation, gql } from "@apollo/client";
 import { useForm } from "react-hook-form";
 import { setAccessToken } from "../../../AccessToken";
 import { useHistory } from "react-router-dom";
+
+import { GoogleLogin } from "react-google-login";
+import FacebookLogin from "react-facebook-login";
+import TwitterLogin from "react-twitter-login";
 
 const LOGIN_USER = gql`
   mutation LoginUser($username: String!, $password: String!) {
@@ -59,6 +65,18 @@ export const Login: React.FC<LoginProps> = ({ setRefresh }) => {
       setRefresh(true);
       history.push("/");
     }
+  };
+
+  const responseGoogle = (response: any) => {
+    console.log("random", response);
+  };
+
+  const responseFacebook = (response: any) => {
+    console.log(response);
+  };
+
+  const authHandler = (err: any, data: any) => {
+    console.log(err, data);
   };
 
   return (
@@ -113,6 +131,36 @@ export const Login: React.FC<LoginProps> = ({ setRefresh }) => {
           </Box>
         </Box>
       </form>
+      <Grid w="30%" textAlign="center" mx="auto" gap={2}>
+        <Center>
+          <GoogleLogin
+            clientId="141790828939-vlrtavg5q2s5tqf4nd78rp3tttg89rf4.apps.googleusercontent.com"
+            buttonText="Log in with Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={"single_host_origin"}
+            theme="dark"
+            uxMode="redirect"
+          />
+        </Center>
+        <Center>
+          <FacebookLogin
+            appId="175071541477673"
+            fields="name,email,picture"
+            onClick={responseFacebook}
+            callback={responseFacebook}
+            textButton="Log in with Facebook"
+          />
+        </Center>
+        <Center>
+          <TwitterLogin
+            authCallback={authHandler}
+            consumerKey={"test"}
+            consumerSecret={"test"}
+            buttonTheme="dark"
+          />
+        </Center>
+      </Grid>
     </Box>
   );
 };

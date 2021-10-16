@@ -9,9 +9,9 @@ export default {
     path: path.join(__dirname, "./migrations"),
     pattern: /^[\w-]+\d+\.[tj]s$/,
   },
-  dbName: "firstproject6",
+  dbName: process.env.DB_NAME,
   type: "postgresql",
   debug: !__prod__,
-  password: "blender",
+  password: process.env.DB_PASSWORD,
   entities: [thought, User],
 } as Parameters<typeof MikroORM.init>[0];

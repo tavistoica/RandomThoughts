@@ -2,8 +2,6 @@ import { QueryOrder } from "mikro-orm";
 import {
   Arg,
   Ctx,
-  Field,
-  InputType,
   Mutation,
   Query,
   Resolver,
@@ -52,12 +50,9 @@ export class ThoughtResolver {
   ) {
     const thoughtObject = await em.findOne(thought, { id });
     if (!thoughtObject) return null;
-    console.log(thoughtObject.likes.includes(userID));
     if (thoughtObject.likes.includes(userID)) {
       const index = thoughtObject.likes.findIndex((item) => item === userID);
-      console.log(index);
       thoughtObject.likes.splice(index, 1);
-      console.log(thoughtObject);
     } else {
       thoughtObject.likes.push(userID);
     }

@@ -44,7 +44,6 @@ import { sendRefreshToken } from "./auth/sendRefreshToken";
 
   apolloServer.applyMiddleware({ app, cors: corsOptions });
 
-  // app.use(cors(corsOptions));
   app.post("/refresh-token", async (req, res) => {
     const token = req.cookies.jid;
     let payload: any = null;
@@ -73,9 +72,3 @@ import { sendRefreshToken } from "./auth/sendRefreshToken";
     console.log("Server started on port 8080");
   });
 })();
-
-// };
-
-// main().catch((err) => {
-//   console.error(err);
-// });
